@@ -1,0 +1,27 @@
+﻿@model ClockCardAplication.Models.TimeLog
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome @Session["UserName"]</h1>
+    <p class="lead">Quick Links below.</p>
+</div>
+
+<div class="row">    
+    <div class="col-md-10">
+        <h2>Log Time</h2>
+        <p>
+            Log your time on an existing project
+        </p>
+        @Html.ActionLink("Log Hours", "Create", "TimeLog")
+    </div>
+    <div class="col-md-10">
+        <h2>Get Project Overview</h2>
+        <p>
+            Get an overview of an exisiting project
+        </p>
+        @Html.ActionLink("Overview", "Index", "TimeLog")
+    </div>    
+</div>

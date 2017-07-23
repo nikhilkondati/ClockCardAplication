@@ -1,0 +1,91 @@
+﻿@model ClockCardAplication.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.customer.fullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer.fullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.expectedEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expectedEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timeSpentInHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timeSpentInHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timeLogs)
+        </dt>
+
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Log Date</th>
+                    <th>Log Time</th>
+                </tr>
+                @foreach (var item in Model.timeLogs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.timeSpentInHours)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+    </dl>   
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.projectId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

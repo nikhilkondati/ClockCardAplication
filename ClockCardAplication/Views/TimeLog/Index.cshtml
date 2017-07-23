@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ClockCardAplication.Models.TimeLog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Session["UserName"]'s TimeLogs</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Filter by Project: @Html.TextBox("SearchString")
+        <input type="submit" value="Filter" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Project", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Log Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timeSpentInHours)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.project.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.timeSpentInHours)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.timeLogId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.timeLogId })
+        </td>
+    </tr>
+}
+
+</table>
